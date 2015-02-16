@@ -1,25 +1,25 @@
-//
-//  ViewController.swift
-//  TableviewCells
-//
-//  Created by Sven Günther on 16.02.15.
-//  Copyright (c) 2015 shg. All rights reserved.
-//
-
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+	@IBOutlet weak var tableView: UITableView!
+	let items = [
+		DataItem(displayName:"Foo", value:"Bar")
+	]
+	
 	override func viewDidLoad() {
-		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
+		tableView.registerClass(TextfieldCell.self, forCellReuseIdentifier: "TextfieldCell")
 	}
-
-	override func didReceiveMemoryWarning() {
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+	
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		return items.count
 	}
-
-
+	
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+		let item = items[indexPath.row]
+		let cell = tableView.dequeueReusableCellWithIdentifier("TextfieldCell") as TextfieldCell
+		cell.dataItem = item
+		return cell
+	}
 }
 

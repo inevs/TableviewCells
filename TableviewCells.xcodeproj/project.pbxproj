@@ -13,6 +13,8 @@
 		26F2E5F41A920B340024B4C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26F2E5F31A920B340024B4C7 /* Images.xcassets */; };
 		26F2E5F71A920B340024B4C7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26F2E5F51A920B340024B4C7 /* LaunchScreen.xib */; };
 		26F2E6031A920B350024B4C7 /* TableviewCellsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F2E6021A920B350024B4C7 /* TableviewCellsTests.swift */; };
+		26F2E60D1A920BF90024B4C7 /* TextfieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F2E60C1A920BF90024B4C7 /* TextfieldCell.swift */; };
+		26F2E60F1A920E3C0024B4C7 /* DataItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F2E60E1A920E3C0024B4C7 /* DataItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		26F2E5FC1A920B350024B4C7 /* TableviewCellsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TableviewCellsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F2E6011A920B350024B4C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26F2E6021A920B350024B4C7 /* TableviewCellsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableviewCellsTests.swift; sourceTree = "<group>"; };
+		26F2E60C1A920BF90024B4C7 /* TextfieldCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextfieldCell.swift; sourceTree = "<group>"; };
+		26F2E60E1A920E3C0024B4C7 /* DataItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +87,8 @@
 				26F2E5F31A920B340024B4C7 /* Images.xcassets */,
 				26F2E5F51A920B340024B4C7 /* LaunchScreen.xib */,
 				26F2E5EA1A920B340024B4C7 /* Supporting Files */,
+				26F2E60C1A920BF90024B4C7 /* TextfieldCell.swift */,
+				26F2E60E1A920E3C0024B4C7 /* DataItem.swift */,
 			);
 			path = TableviewCells;
 			sourceTree = "<group>";
@@ -212,7 +218,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26F2E60D1A920BF90024B4C7 /* TextfieldCell.swift in Sources */,
 				26F2E5EF1A920B340024B4C7 /* ViewController.swift in Sources */,
+				26F2E60F1A920E3C0024B4C7 /* DataItem.swift in Sources */,
 				26F2E5ED1A920B340024B4C7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
