@@ -92,5 +92,10 @@ class TextfieldCell: UITableViewCell, UITextFieldDelegate {
 		return true
 	}
 	
+	func textFieldDidEndEditing(textField: UITextField) {
+		dataItem?.setValue(textField.text)
+		showTextfield(false)
+	}
+	
 	
 }
