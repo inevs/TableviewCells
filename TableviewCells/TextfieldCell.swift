@@ -5,7 +5,8 @@ class TextfieldCell: UITableViewCell, UITextFieldDelegate {
 	let textField: UITextField
 	let displayLabel: UILabel
 	let valueLabel: UILabel
-
+	var textfieldWidthConstraint: NSLayoutConstraint?
+	
 	var dataItem: DataItem? {
 		didSet {
 			if let item = dataItem {
@@ -34,15 +35,17 @@ class TextfieldCell: UITableViewCell, UITextFieldDelegate {
 	}
 	
 	func postInit() {
+		self.selectionStyle = .None
 		textField.setTranslatesAutoresizingMaskIntoConstraints(false)
-		textField.hidden = true
+		textField.backgroundColor = UIColor(white: 0.9, alpha: 1.0)
 		textField.delegate = self
 		self.contentView.addSubview(textField)
+		textfieldWidthConstraint = NSLayoutConstraint(item: textField, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 0)
+		textField.addConstraint(textfieldWidthConstraint!)
 		self.contentView.addConstraints([
-			NSLayoutConstraint(item: textField, attribute: .Leading, relatedBy: .Equal, toItem: self.contentView, attribute: .LeadingMargin, multiplier: 1.0, constant: 8.0),
 			NSLayoutConstraint(item: textField, attribute: .Trailing, relatedBy: .Equal, toItem: self.contentView, attribute: .TrailingMargin, multiplier: 1.0, constant: -8.0),
-			NSLayoutConstraint(item: textField, attribute: .Top, relatedBy: .Equal, toItem: self.contentView, attribute: .TopMargin, multiplier: 1.0, constant: 0),
-			NSLayoutConstraint(item: textField, attribute: .Bottom, relatedBy: .Equal, toItem: self.contentView, attribute: .BottomMargin, multiplier: 1.0, constant: 0)
+			NSLayoutConstraint(item: textField, attribute: .Top, relatedBy: .Equal, toItem: self.contentView, attribute: .Top, multiplier: 1.0, constant: 0),
+			NSLayoutConstraint(item: textField, attribute: .Bottom, relatedBy: .Equal, toItem: self.contentView, attribute: .Bottom, multiplier: 1.0, constant: 0)
 			])
 		displayLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
 		self.contentView.addSubview(displayLabel)
@@ -68,14 +71,19 @@ class TextfieldCell: UITableViewCell, UITextFieldDelegate {
 	}
 	
 	func showTextfield(show: Bool) {
-		textField.hidden = !show
+		textfieldWidthConstraint?.constant = show ? self.contentView.frame.size.width - 30 :  0
 		textField.placeholder = displayLabel.text
-		if valueLabel.text != nil && valueLabel.text != "" {
-			textField.text = valueLabel.text
-		}
 		displayLabel.hidden = show
 		valueLabel.hidden = show
-		textField.becomeFirstResponder()
+		UIView.animateWithDuration(0.25) {
+			self.layoutIfNeeded()
+		}
+		if valueLabel.text != nil && valueLabel.text != "" {
+			textField.text = show ? valueLabel.text : ""
+		}
+		if show {
+			textField.becomeFirstResponder()
+		}
 	}
 	
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
